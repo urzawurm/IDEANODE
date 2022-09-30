@@ -1,0 +1,125 @@
+<style>
+  h1{color: rgba(159, 6, 101, 0.996);
+     font-family: fantasy;
+  }
+  P{font-size: larger;
+    font-family:cursive;
+    font-style: oblique;
+  }
+  body{background-image: url("/img/background.jpg");
+       background-size: cover;
+  }
+  #buyButton{ type="submit";
+  name="productId";
+  value=1;// 用黎加id
+  btn btn-secondary;
+  data-toggle="modal;
+  data-target="#myModal;
+  }
+  </style>
+
+<body>
+    <div class="row justify-content-center "><h1>Products</h1></div>
+        <div class="row justify-content-center ">
+            {{!-- 圖片設置1 --}}
+          <div class="jumbotron ">
+            <img src="/img/theLoraProduct1.jpeg" alt="product1" class="img-fluid img-thumbnail">
+            <h3>Bergamot</h3>
+            <button class="btn btn-outline-secondary btn-sm" data-toggle="collapse" data-target="#productIntroduction1">Product Introduction</button><h3></h3>
+            <div id="productIntroduction1" class="collapse">Keep Clear, Keep Calm!</div>
+            {{!-- 購買數量1 --}}
+            <form action="/carts/add" method="post" id="product1">
+              <label style="margin-left: 0px" >每支$50,請選擇數量:</label>
+              <input type="Number" name="productNum" value="0" min="0" placeholder="Pls select qty" style="width:45px"/>
+              <div class="row" style="margin-left: 0px" >
+                <button type="submit" name="productId" value=1 class="btn btn-outline-secondary" data-toggle="modal" data-target="#myModal">Add To Cart</button>
+                <button type="submit" name="productId" value=1 class="btn btn-outline-secondary" style="margin-left: 15px">Buy</button>
+              </div>
+            </form>
+            <!-- 模态框設置1 -->
+              <div>
+                  <div class="modal fade " id="myModal">
+                  <div class="modal-dialog modal-sm modal-content">
+                    <div class="modal-header"><!-- 模态框头部 -->
+                      <h4 class="modal-title">Added to your cart!</h4>
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">Thank you!</div><!-- 模态框主体 -->
+                    <div class="modal-footer"><!-- 模态框底部 -->
+                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                  </div>
+              </div>
+          </div>
+            {{!-- 圖片設置2 --}}
+          <div class="jumbotron ">
+            <img src="/img/theLoraProduct2.jpeg" alt="product2" class="img-fluid img-thumbnail">
+            <h3>Clary Sage</h3>
+            <button class="btn btn-outline-secondary btn-sm" data-toggle="collapse" data-target="#productIntroduction2">Product Introduction</button><h3></h3>
+            <div id="productIntroduction2" class="collapse">Keep Clear, Keep Calm!</div>
+            {{!-- 購買數量2 --}}
+            <form action="/carts/add" method="post" id="product2">
+        
+             <label style="margin-left: 0px" >每支$50,請選擇數量:</label>
+              <input type="Number" name="productNum" value="0" min="0" placeholder="Pls select qty" style="width:45px"/>
+
+             <div class="row" style="margin-left: 0px" >
+               <button type="submit" name="productId" value=2 class="btn btn-outline-secondary" data-toggle="modal" data-target="#myModal">Add To Cart</button>
+               <button type="submit" name="productId" value=2 class="btn btn-outline-secondary" style="margin-left: 15px">Buy</button>
+             </div>
+
+ 
+            </form>
+            <!-- 模态框設置2 -->
+              <div>
+                  <div class="modal fade " id="myModal">
+                  <div class="modal-dialog modal-sm modal-content">
+                    <div class="modal-header"><!-- 模态框头部 -->
+                      <h4 class="modal-title">Added to your cart!</h4>
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">Thank you!</div><!-- 模态框主体 -->
+                    <div class="modal-footer"><!-- 模态框底部 -->
+                     <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                  </div>
+              </div>
+          </div>
+            {{!-- 圖片設置3 --}}
+            <div class="jumbotron ">
+            <img src="/img/theLoraProduct3.jpeg" alt="product3" class="img-fluid img-thumbnail">
+            <h3>Rose Geranium</h3>
+            <button class="btn btn-outline-secondary btn-sm" data-toggle="collapse" data-target="#productIntroduction3">Product Introduction</button><h3></h3>
+            <div id="productIntroduction3" class="collapse">Keep Clear, Keep Calm!</div>
+            {{!-- 購買數量3 --}}
+            <form action="/carts/add" method="post" id="product3">
+              <label style="margin-left: 0px" >每支$50,請選擇數量:</label>
+              <input type="Number" name="productNum" value="0" min="0" placeholder="Pls select qty" style="width:45px"/>
+
+              <div class="row" style="margin-left: 0px" >
+                <button type="submit" name="productId" value=3 class="btn btn-outline-secondary" data-toggle="modal" data-target="#myModal">Add To Cart</button>
+                <button type="submit" name="productId" value=3 class="btn btn-outline-secondary" style="margin-left: 15px">Buy</button>
+              </div>
+            </form>
+            <!-- 模态框設置3 -->
+              <div>
+                  <div class="modal fade " id="myModal">
+                  <div class="modal-dialog modal-sm modal-content">
+                    <div class="modal-header"><!-- 模态框头部 -->
+                      <h4 class="modal-title">Added to your cart!</h4>
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">Thank you!</div><!-- 模态框主体 -->
+                    <div class="modal-footer"><!-- 模态框底部 -->
+                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+
+</body>
+

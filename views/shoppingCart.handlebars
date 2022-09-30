@@ -1,0 +1,36 @@
+<style>
+P{font-size: larger;
+  font-family:cursive;
+  font-style: oblique;
+}
+body{background-image: url("/img/background.jpg");
+    background-size: cover;
+}
+h1{color: rgba(159, 6, 101, 0.996);
+     font-family: fantasy;
+}
+.card-bg{
+  background-size: cover;
+  background-position: center center; 
+}
+</style>
+
+<section>
+  <div class="container mt-5">
+     <h1 class=" text-center mb-4 h1">Shopping Cart</h1>
+     
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header d-flex align-items-end" id="headingOne"></div>
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+      {{>_shoptable}}
+        </div>
+      </div>  
+      {{>_buyButton}}
+
+    </div>
+  </div>
+  
+  </section>
+  

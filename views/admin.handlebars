@@ -1,0 +1,63 @@
+<style>
+P{font-size: larger;
+  font-family:cursive;
+  font-style: oblique;
+}
+body{background-image: url("/img/background.jpg");
+    background-size: cover;
+}
+h3{color: rgba(159, 6, 101, 0.996);
+     font-family: fantasy;
+}
+</style>
+
+<div class="row">
+    <div class="col-md-5 mx-auto">
+        <h3 class="text-center">Admin Config</h3>
+        <form action="/admin" method="post">
+            <div class="form-group">
+
+            <div class="form-group">
+                <label for="productId">Product ID </label>
+                <select name="productId" class="form-inline form-select" >
+                  <option value="1">1 Bergamot 50ml</option>
+                  <option value="2">2 Bergamot 500ml</option>
+                  <option value="3">3 Clary Sage 50ml</option>
+                  <option value="4">4 Clary Sage 500ml</option>
+                  <option value="5">5 Rose Geranium 50ml</option>
+                  <option value="6">6 Rose Geranium 500ml</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="productName">Product Name</label>
+                <select name="productName" class="form-inline form-select" >
+                  <option value="Bergamot">Bergamot</option>
+                  <option value="Clary Sage">Clary Sage</option>
+                  <option value="Rose Geranium">Rose Geranium</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="StoreQty">Store Qty</label>
+                <input 
+                    type="Number" 
+                    class="form-control" 
+                    name="storeQty" 
+                    value="{{storeQty}}"
+                    autocomplete="off"/>
+            </div>
+            <div class="form-group">
+                <label for="type">Type</label>
+                <select name="type" class="form-inline form-select" >{{!-- 產品表格 --}}
+                  <option value="50">50ml</option>
+                  <option value="500">500ml</option>
+                </select>
+            </div>
+
+
+        <button type="sumbit" class="btn btn-success">Submit</button>
+        </form>
+    </div>
+</div>
+
