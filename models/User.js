@@ -18,6 +18,15 @@ const UserSchema = new Schema({
         type:String,
         required:true,
     },
+    cart: {
+        type: Schema.Types.Mixed,
+        default: {
+            date: {
+                type:Date,
+                default: Date.now
+            }
+        },
+    },
     date:{
         type:Date,
         default:Date.now,
@@ -26,6 +35,8 @@ const UserSchema = new Schema({
         data: {type: Buffer},
         contentType: {type: String},
     },
+}, {
+    minimize: false
 });
 
 const User = mongoose.model("users",UserSchema);

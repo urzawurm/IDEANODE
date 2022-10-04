@@ -29,10 +29,19 @@
             <div id="productIntroduction1" class="collapse">Keep Clear, Keep Calm!</div>
             {{!-- 購買數量1 --}}
             <form action="/carts/add" method="post" id="product1">
-              <label style="margin-left: 0px" >每支$50,請選擇數量:</label>
-              <input type="Number" name="productNum" value="0" min="0" placeholder="Pls select qty" style="width:45px"/>
+              <div class="d-flex flex-column">
+                <div class="d-flex mb-1 mt-1 align-item-center">
+                  <label style="margin-left: 0px; margin-bottom: 0px; margin-right:2px; padding-top: 4px" >每支$50,請選擇數量:</label>
+                  <input type="Number" name="productNum" value="0" min="0" placeholder="Pls select qty" style="width:45px"/>
+                </div>
+                <select class="form-select mb-2 mt-2" aria-label="Disabled select example" name="productType">
+                  <option value='' selected>Please select the size</option>
+                  <option value="50">50ML</option>
+                  <option value="100">500ML</option>
+                </select>
+              </div>
               <div class="row" style="margin-left: 0px" >
-                <button type="submit" name="productId" value=1 class="btn btn-outline-secondary" data-toggle="modal" data-target="#myModal">Add To Cart</button>
+                <button id="addTest" type="submit" name="productId" value=1 class="btn btn-outline-secondary" data-toggle="modal" data-target="#myModal">Add To Cart</button>
                 <button type="submit" name="productId" value=1 class="btn btn-outline-secondary" style="margin-left: 15px">Buy</button>
               </div>
             </form>
@@ -122,4 +131,10 @@
         </div>
 
 </body>
+<script>
+  const addTest = document.getElementById('addTest');
+  addTest.addEventListener('click', ()=> {
+    
+  })
+</script>
 

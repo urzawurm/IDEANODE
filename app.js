@@ -18,6 +18,8 @@ import passportConfig from "./config/passportConfig.js" //外來野，可以放�
 passportConfig(passport);
 import dotenv from "dotenv";
 import mongoURI from"./config/database.js";
+import adminRoute from './routes/adminRoute.js'; 
+
 dotenv.config();
 console.log(process.env.PORT);
 console.log(process.env.mongoURI);
@@ -46,9 +48,9 @@ app.use(
     secret:"anything",
     resave: true,
     saveUninitialized: true,
-    cookie:{
-        maxAge: 100 * 1000 //10秒後logout
-    }
+    // cookie:{
+    //     maxAge: 100 * 1000 //10秒後logout
+    // }
 })
 );
 app.use(flash());
@@ -83,11 +85,6 @@ app.get("/about",(req,res)=>{
     res.render("about");
 });
 
-app.get("/admin",(req,res)=>{
-    res.render("admin");
-});
-app.post("/admin", postAdmin)
-
 import ensureAuthenticated from "./helpers/auth.js"; 
 
 //把data save入 data base,middle ware ,在routes/ideasRoute.js
@@ -95,6 +92,7 @@ app.use("/ideas", ensureAuthenticated, ideasRoute);
 app.use("/users", usersRoute);
 app.use("/carts", cartsRoute); //自己作 req path
 //app.use("/products", productsRoute);
+app.use('/admin', adminRoute);
 app.use("/*",(req,res)=>{
     res.status(404);
     res.render("404");
