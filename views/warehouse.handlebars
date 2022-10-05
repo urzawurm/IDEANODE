@@ -24,13 +24,10 @@
       <div class="row justify-content-start">
         Quantity:
         <div class="">{{qty}}</div>
-         {{!-- <input 
-          type="Number" 
-          name="qty" 
-          value={{qty}}
-          autocomplete="off"
-          id="qty-input"
-        /> --}}
+      </div>
+      <div class="row justify-content-start">
+        Price:
+        <div class="">{{price}} $</div>
       </div>
       <a href="/admin/warehouse/edit/{{_id}}" class="btn btn-danger mb-1 mt-1" style="width: 145px">Update Quantity</a>
     <form action="/admin/warehouse/{{_id}}?_method=Delete" method="POST">

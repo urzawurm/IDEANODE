@@ -17,8 +17,9 @@ export const postAdmin =(req, res)=>{
       new Product({
         productId: req.body.productId,
         productName: req.body.productName,
-        qty: new Number(req.body.qty),
+        qty: Number(req.body.qty),
         type: req.body.type,
+        price: Number(req.body.price)
       }).save().then(() => {
         console.log('update successful!!');
         res.redirect('/admin');
@@ -46,11 +47,12 @@ export const updateProduct = (req, res) => {
   // console.log("product update", req.body);
   console.log("product update id", req.params.id);
   // console.log("product update type", typeof req.body.qty);
-  Product.findOne({_id:req.params.id}).then((record)=>{
+  Product.findOne({_id:req.params.id}).then((record)=> {
     console.log("suc?")
     record.qty = Number(req.body.qty); 
+    record.price = Number(req.body.price);
     record.save().then(()=>{
-         res.redirect("/admin/warehouse");
+      res.redirect("/admin/warehouse");
     }).catch((err) => {
       console.log('update failed')
     })

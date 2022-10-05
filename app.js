@@ -19,6 +19,7 @@ passportConfig(passport);
 import dotenv from "dotenv";
 import mongoURI from"./config/database.js";
 import adminRoute from './routes/adminRoute.js'; 
+import productRoute from './routes/productsRoute.js';
 
 dotenv.config();
 console.log(process.env.PORT);
@@ -75,9 +76,7 @@ app.get("/", (req,res)=>{ //get指令:做完over,會自動加(),所以get(x=>())
     const title = "THE LORA";// varlue title pass入Obj:title,在index加左個title,為何index不加Welcome？只需pass個地址,放便pass更多的varlue
     res.render("Index",{title:title}); //OBJ,{title:title}
 });
-app.get("/products",(req,res)=>{ //去product路徑
-    res.render("products");
-});
+app.use("/products", productRoute);
 app.get("/shoppingCart",(req,res)=>{
     res.render("shoppingCart");
 });

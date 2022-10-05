@@ -19,6 +19,11 @@ const ProductSchema = new Schema({
     default: 0,
     require: true,
    },
+   price: {
+    type: Number,
+    default: 0,
+    require: true
+   },
     data: {
       type: Date,
       default: Date.now
