@@ -26,20 +26,20 @@
           <img src="/img/theLoraProduct1.jpeg" alt="product1" class="img-fluid img-thumbnail">
           <h3>{{productName}}</h3>
           <button class="btn btn-outline-secondary btn-sm" data-toggle="collapse" data-target="#productIntroduction1">Product Introduction</button><h3></h3>
-          <div id="productIntroduction1" class="collapse">Keep Clear, Keep Calm!</div>
-          <form action="/products/carts/add" method="post" id="form">
+          <div class="collapse">Keep Clear, Keep Calm!</div>
+          <form action="/users/login" method="get">
             <div class="d-flex flex-column">
               <div class="d-flex mb-1 mt-1 align-item-center">
                 <label style="margin-left: 0px; margin-bottom: 0px; margin-right:2px; padding-top: 4px" >每支${{price}},請選擇數量:</label>
                 <input type="Number" name="productNum" value="" min="1" max={{qty}} style="width:45px"/>
               </div>
-              <div name="productId" value={{productId}}>
+              <div>
                 {{type}}ML
               </div>
             </div>
             <div class="row" style="margin-left: 0px" >
-              <button type="submit" name="productId" value={{productId}} class="btn btn-outline-secondary">Add To Cart</button>
-              <button type="submit" name="productId" value={{productId}} class="btn btn-outline-secondary" style="margin-left: 15px">Buy</button>
+              <a href="/users/login" class="btn btn-outline-secondary">Add To Cart</a>
+              <button type="submit" name="productId" value=1 class="btn btn-outline-secondary" id="submit" style="margin-left: 15px">Buy</button>
             </div>
           </form>
           <div>
@@ -60,7 +60,4 @@
       {{/each}}
   </div>
 </body>
-<script>
-
-</script>
 

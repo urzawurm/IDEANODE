@@ -1,31 +1,51 @@
 import Product from "../models/Product.js";
-
+import Cart from "../models/Cart.js";
 
 export const getProduct = (req, res) => {
-  let obj = {};
-  let arr = [];
     Product.find({}).lean().then((product) => {
-    // console.log('product',product);
-    product.map((item,index) => {
-    if(!arr.includes(item.productName)) {
-      arr.push(item.productName);
-    }
-    })
-    
-    arr.map(item => {
-      let idArr = [];
-      let priceArr = [];
-      let typeArr = [];
-      product.map(value =>  {
-        if(value.productName === item) {
-          idArr.push(value.productId);
-          priceArr.push(value.price);
-          typeArr.push(value.type);
-        }
-      })
-      obj[item] = {name: item, id: idArr, price: priceArr, type: typeArr }
-    })
-    console.log("obj???", obj)
-        res.render('products', {allProduct: obj, auth: res.locals.user})
+      if (res.locals.user) {
+        res.render('products', {allProduct: product})
+      } else {
+        res.render('noAuthProduct', {allProduct: product})
+      }
     })
 } 
+
+export const updateProduct = (req, res) => {
+  const {productId, productNum} = req.body;
+  let newCartItem;
+  let totalPrice;
+  if (!productNum) {
+    req.flash("error_msg","Please Input Amount");
+    res.redirect('/products')
+    return
+  }
+  Product.findOne({productId: productId}).then((item) => {
+    totalPrice = item.price * productNum;
+    newCartItem = {
+      userId: res.locals.user?._id,
+      productId: item.productId,
+      qty:productNum,
+      price: totalPrice,
+      type:item.type,
+      productNum: item.productName,
+      productName: item.productName
+    }
+  
+    Cart.findOne({productId: productId, userId: res.locals.user?._id}).then((item) => {
+      if (item) {
+        item.price = item.price + totalPrice
+        item.qty = item.qty + Number(productNum);
+        Cart(item).save().then(() => {
+          req.flash("success_msg", "added to carts!");
+          res.redirect('/products')
+        })
+      }  else {
+        new Cart(newCartItem).save().then(() => {
+          req.flash("success_msg", "added to carts!");
+          res.redirect('/products')
+      })
+      }
+    })
+  })
+}

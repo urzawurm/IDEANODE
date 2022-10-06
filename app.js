@@ -10,6 +10,7 @@ import methodOverride from "method-override";
 import ideasRoute from "./routes/ideasRoute.js";
 import usersRoute from "./routes/usersRoute.js";
 import cartsRoute from "./routes/cartsRoute.js";
+import shoppingCartRoute from "./routes/shoppingCartRoute.js";
 //import productsRoute from "./routes/productsRoute.js";
 import {postAdmin} from "./controllers/adminController.js";
 
@@ -77,9 +78,7 @@ app.get("/", (req,res)=>{ //get指令:做完over,會自動加(),所以get(x=>())
     res.render("Index",{title:title}); //OBJ,{title:title}
 });
 app.use("/products", productRoute);
-app.get("/shoppingCart",(req,res)=>{
-    res.render("shoppingCart");
-});
+app.use("/shoppingCart", shoppingCartRoute);
 app.get("/about",(req,res)=>{
     res.render("about");
 });

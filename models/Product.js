@@ -24,7 +24,11 @@ const ProductSchema = new Schema({
     default: 0,
     require: true
    },
-    data: {
+   desc: {
+    type: String,
+    require: true,
+   },
+    date: {
       type: Date,
       default: Date.now
    }
