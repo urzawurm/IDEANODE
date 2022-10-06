@@ -33,13 +33,13 @@
                 <label style="margin-left: 0px; margin-bottom: 0px; margin-right:2px; padding-top: 4px" >每支${{price}},請選擇數量:</label>
                 <input type="Number" name="productNum" value="" min="1" max={{qty}} style="width:45px"/>
               </div>
-              <div name="productId" value={{productId}}>
+              <div>
                 {{type}}ML
               </div>
             </div>
             <div class="row" style="margin-left: 0px" >
               <button type="submit" name="productId" value={{productId}} class="btn btn-outline-secondary">Add To Cart</button>
-              <button type="submit" name="productId" value={{productId}} class="btn btn-outline-secondary" style="margin-left: 15px">Buy</button>
+              <button type="submit" name="buy" class="btn btn-outline-secondary" value={{productId}} style="margin-left: 15px">Buy</button>
             </div>
           </form>
           <div>

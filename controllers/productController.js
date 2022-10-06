@@ -12,6 +12,11 @@ export const getProduct = (req, res) => {
 } 
 
 export const updateProduct = (req, res) => {
+  console.log("submit?", req.body)
+  if (req.body.buy) {
+    
+  }
+  
   const {productId, productNum} = req.body;
   let newCartItem;
   let totalPrice;

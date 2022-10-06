@@ -5,3 +5,14 @@ export const getShoppingCart = (req, res) => {
     res.render('shoppingCart', {cartItems: carts})
   })
 }
+
+export const deleteShoppingCart = (req, res) => {
+  Cart.deleteOne({userId: req.body.userId, productId: req.params.id}).then((item) =>{
+    res.redirect('/shoppingCart');
+    console.log("delete?", item)
+  })
+}
+
+export const postShoppingCart = (req, res) => {
+  
+}
