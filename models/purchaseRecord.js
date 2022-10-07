@@ -6,24 +6,40 @@ const purchaseRecordSchema = new Schema({
       type: String,
       required:true,
     },
-    productId: { //產品種類
+    userName: {
       type: String,
       required: true,
-    }, 
-    qty:{ //產品數量
-        type: Number,
+    },
+    userAddress: {
+      type: String,
+      required: true,
+    },
+    // productId: {
+    //   type: Schema.Types.Mixed,
+    //   required: true,
+    // }, 
+    qty:{
+        type: Schema.Types.Mixed,
         required:true
     },
     price: {
+      type: Schema.Types.Mixed,
+      required: true
+    },
+    shipMethod: {
       type: Number,
       required: true
     },
-    type: {
+    finalFee: {
       type: Number,
       required: true,
     },
+    // type: {
+    //   type: Number,
+    //   required: true,
+    // },
     productName: {
-      type: String,
+      type: Schema.Types.Mixed,
       required: true,
     },
     date: { //加入日期記錄

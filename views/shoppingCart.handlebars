@@ -14,7 +14,7 @@ h1{color: rgba(159, 6, 101, 0.996);
   background-position: center center; 
 }
 </style>
-
+{{#if cartItems}}
 <section>
   <div class="container mt-5">
      <h1 class=" text-center mb-4 h1">Shopping Cart</h1>
@@ -73,12 +73,6 @@ h1{color: rgba(159, 6, 101, 0.996);
                {{!-- 總價 --}}
               <tfoot>
                 <tr>
-                  <td colspan="4" class="text-right font-weight-bold alert-info">Additional shipping </td>
-                  <td class="text-right">
-                    <div id="additional-fee">$30</div>
-                  </td>
-                </tr>  
-                <tr>
                   <td colspan="4" class="text-right font-weight-bold alert-danger">Total Amount </td>
                   <td class="text-right">
                     <div id="total-value">
@@ -101,7 +95,7 @@ h1{color: rgba(159, 6, 101, 0.996);
         </div>
       </div>
       <div style="display: flex; justify-content: flex-end;" id="confirm-btn">
-        <button class='btn btn-success'>Confirm</button>
+        <a href="/shoppingCart/confirm" class='btn btn-success'>Confirm</a>
       </div>
       {{!-- {{>_buyButton}} --}}
 
@@ -109,29 +103,45 @@ h1{color: rgba(159, 6, 101, 0.996);
   </div>
   
   </section>
+  {{else}}
+  <section>
+  <div class="container mt-5">
+    <h1 class=" text-center mb-4 h1">Shopping Cart</h1>
+    <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header d-flex align-items-end" id="headingOne"></div>
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample" style="text-align: center;">
+          You don't have any item yet
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  </section>
+  
+  {{/if}}
 
   <script>
     const additionalFee = document.getElementById("additional-fee");
     const price = document.querySelectorAll(".price");
-    const fee = Number(additionalFee.innerText.split("$")[1]);
     const finalFee = document.getElementById('total-value');
+
     let newTotalFee = 0;
     for(let i = 0; i < price.length; i++) {
       newTotalFee = newTotalFee + Number(price[i].innerText);
       price[i].innerText = `$${price[i].innerText}`
     }
 
-    finalFee.innerText = `$${fee + newTotalFee}`;
+    finalFee.innerText = `$${newTotalFee}`;
     if (price.length === 0) {
       additionalFee.innerText = '';
       finalFee.innerText = '';
       document.getElementById("table").style.display = "none";
       document.getElementById("confirm-btn").style.display = "none";
-      document.getElementById("collapseOne").innerHTML = `<div style="text-align: center;">You don't have any item yet</div>`;
 
     }
     
-    console.log("adFe", fee)
     console.log('price', price)
 
 

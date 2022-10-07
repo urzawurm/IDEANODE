@@ -11,11 +11,26 @@ export const getProduct = (req, res) => {
     })
 } 
 
-export const updateProduct = (req, res) => {
-  console.log("submit?", req.body)
-  if (req.body.buy) {
-    
-  }
+export const updateCarts = (req, res) => {
+  console.log("?????", req.body)
+  if (req.buy) {
+    Product.findOne({productId: buy}).then((item) => {
+    //   totalPrice = item.price * productNum;
+    //   newCartItem = {
+    //     userId: res.locals.user?._id,
+    //     productId: item.productId,
+    //     qty:productNum,
+    //     price: totalPrice,
+    //     type:item.type,
+    //     productNum: item.productName,
+    //     productName: item.productName
+    //   }
+    //   new Cart(newCartItem).save().then(() => {
+    //     req.flash("success_msg", "added to carts!");
+    //     res.render('confirm', {allRecord: item})
+    // })
+  })
+} else {
   
   const {productId, productNum} = req.body;
   let newCartItem;
@@ -53,4 +68,5 @@ export const updateProduct = (req, res) => {
       }
     })
   })
+}
 }

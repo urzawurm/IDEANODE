@@ -78,7 +78,7 @@ app.get("/", (req,res)=>{ //get指令:做完over,會自動加(),所以get(x=>())
     res.render("Index",{title:title}); //OBJ,{title:title}
 });
 app.use("/products", productRoute);
-app.use("/shoppingCart", shoppingCartRoute);
+app.use("/shoppingCart", ensureAuthenticated, shoppingCartRoute);
 app.get("/about",(req,res)=>{
     res.render("about");
 });
