@@ -14,10 +14,10 @@ const purchaseRecordSchema = new Schema({
       type: String,
       required: true,
     },
-    // productId: {
-    //   type: Schema.Types.Mixed,
-    //   required: true,
-    // }, 
+    productId: {
+      type: Schema.Types.Mixed,
+      required: true,
+    }, 
     qty:{
         type: Schema.Types.Mixed,
         required:true

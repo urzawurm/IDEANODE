@@ -5,7 +5,6 @@ import User from "./../models/User.js";
 export default function (passport) {
     passport.use(
         new LocalStrategy ({usernameField: "emailInput"}, function(emailInput, passwordInput, done) {
-            console.log(`inside config : ${emailInput}, ${passwordInput}`);
             User.findOne({email : emailInput}).then(user => {
                 if (!user) {
                     return done(null, false, {

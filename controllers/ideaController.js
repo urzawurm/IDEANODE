@@ -5,10 +5,8 @@ export const getIdeas=(req,res)=>{
     .lean()
     .sort({ date: "desc" })
     .then((ideas)=>{
-        console.log(ideas);
         res.render("ideas/index", { ideas: ideas}); //models/idea.js, in mongoDB db.ideas.find()
     });
-    console.log("user_name:")
 };
 
 //come back later, add the/ideas function
@@ -63,12 +61,11 @@ export const putEditIdea=(req,res)=>{ //user update
     });
 };
 export const deleteIdea=(req,res)=>{
-    // Idea.deleteOne({_id: req.params.id})
-    //     .then(()=>{
-    //         req.flash("error_msg","Note Deleted !"); //出deleted唔到的msg 通知
-    //         res.redirect("/ideas")
-    //     });
-    console.log("is product id?", req.params.id);
+    Idea.deleteOne({_id: req.params.id})
+        .then(()=>{
+            req.flash("error_msg","Note Deleted !"); //出deleted唔到的msg 通知
+            res.redirect("/ideas")
+        });
 };
 
 export const getRecords= (req,res)=>{

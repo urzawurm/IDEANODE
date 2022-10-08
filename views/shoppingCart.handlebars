@@ -58,7 +58,10 @@ h1{color: rgba(159, 6, 101, 0.996);
                       class="card-body card-bg" style="background-image:url(/img/theLoraProduct1.jpeg);">
                       </div>
                     </div>
-                  <td>{{productName}}</td>
+                  <td>
+                    <input type="hidden" name="productId" value={{productId}} >
+                    {{productName}}
+                  </td>
                   <td>{{qty}}件</td>
                   <td class="text-right">
                     <div class="price" value="price">
@@ -139,11 +142,6 @@ h1{color: rgba(159, 6, 101, 0.996);
       finalFee.innerText = '';
       document.getElementById("table").style.display = "none";
       document.getElementById("confirm-btn").style.display = "none";
-
     }
-    
-    console.log('price', price)
-
-
   </script>
   

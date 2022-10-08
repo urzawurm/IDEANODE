@@ -27,11 +27,11 @@
           <h3>{{productName}}</h3>
           <button class="btn btn-outline-secondary btn-sm" data-toggle="collapse" data-target="#productIntroduction1">Product Introduction</button><h3></h3>
           <div id="productIntroduction1" class="collapse">Keep Clear, Keep Calm!</div>
-          <form action="/products/carts/add" method="post" id="form">
+          <form action="/shoppingCart/add" method="post" id="form">
             <div class="d-flex flex-column">
               <div class="d-flex mb-1 mt-1 align-item-center">
                 <label style="margin-left: 0px; margin-bottom: 0px; margin-right:2px; padding-top: 4px" >每支${{price}},請選擇數量:</label>
-                <input type="Number" name="productNum" value="" min="1" max={{qty}} style="width:45px"/>
+                <input type="Number" name="productNum" value="" min="1" max={{qty}} style="width:45px" class="input-qty"/>
               </div>
               <div>
                 {{type}}ML
@@ -39,23 +39,9 @@
             </div>
             <div class="row" style="margin-left: 0px" >
               <button type="submit" name="productId" value={{productId}} class="btn btn-outline-secondary">Add To Cart</button>
-              <button type="submit" name="buy" class="btn btn-outline-secondary" value={{productId}} style="margin-left: 15px">Buy</button>
+              <button type="submit" name="buy" class="btn btn-outline-secondary buy" value={{productId}} style="margin-left: 15px">Buy</button>
             </div>
           </form>
-          <div>
-            <div class="modal fade " id="myModal">
-              <div class="modal-dialog modal-sm modal-content">
-                <div class="modal-header"><!-- 模态框头部 -->
-                  <h4 class="modal-title">Added to your cart!</h4>
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">Thank you!</div><!-- 模态框主体 -->
-                <div class="modal-footer"><!-- 模态框底部 -->
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-              </div>
-            </div>
-          </div>
       </div>
       {{/each}}
   </div>
