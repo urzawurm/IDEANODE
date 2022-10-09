@@ -1,10 +1,33 @@
 import Product from "../models/Product.js"
+import ProductBasicInfos from "../models/ProductBasicInfo.js";
+
+export const getUpdateAdmin = (req, res) => {
+  ProductBasicInfos.find({}).then(item => {
+    res.render("updateAdmin", {items: item});
+  })
+}
 
 export const getAdmin = (req, res) => {
   res.render("admin");
 }
 
 export const postAdmin =(req, res)=>{ 
+  ProductBasicInfos.findOne({productId: req.body.productId}).then((product)=>{
+    if (product) {
+      req.flash("error_msg", "Item have existed !!")
+      res.redirect('/admin')
+    } else {
+      new ProductBasicInfos({
+        productId: req.body.productId,
+        productName: req.body.productName,
+        type: req.body.type,
+      }).save().then(() => {
+        res.redirect('/admin/update');
+      })
+    }
+  })
+}
+export const postUpdateAdmin =(req, res)=>{ 
   Product.findOne({productId: req.body.productId}).then((product)=>{
     if (product) {
       product.qty = product.qty + new Number(req.body.qty);

@@ -6,6 +6,7 @@ export default function (passport) {
     passport.use(
         new LocalStrategy ({usernameField: "emailInput"}, function(emailInput, passwordInput, done) {
             User.findOne({email : emailInput}).then(user => {
+                console.log("user?", user)
                 if (!user) {
                     return done(null, false, {
                         type: "fail_passport",

@@ -35,6 +35,11 @@ const UserSchema = new Schema({
         data: {type: Buffer},
         contentType: {type: String},
     },
+    isAdmin: {
+        type: Boolean,
+        default:false,
+        required:false
+    }
 }, {
     minimize: false
 });

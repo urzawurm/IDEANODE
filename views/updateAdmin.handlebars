@@ -1,0 +1,129 @@
+<style>
+P{font-size: larger;
+  font-family:cursive;
+  font-style: oblique;
+}
+body{background-image: url("/img/background.jpg");
+    background-size: cover;
+}
+h3{color: rgba(159, 6, 101, 0.996);
+     font-family: fantasy;
+}
+</style>
+
+<div class="row">
+    <div class="col-md-5 mx-auto">
+        <h3 class="text-center">Admin Config</h3>
+        <form action="/admin" method="post" id="form">
+            <div class="form-group">
+
+            <div class="form-group">
+                <label for="productId">Product ID </label>
+                <select name="productId" class="form-inline form-select" id="update-select-id">
+                  {{!-- <option value="1">1-Bergamot 50ml</option>
+                  <option value="2">2-Bergamot 500ml</option>
+                  <option value="3">3-Clary Sage 50ml</option>
+                  <option value="4">4-Clary Sage 500ml</option>
+                  <option value="5">5-Rose Geranium 50ml</option>
+                  <option value="6">6-Rose Geranium 500ml</option> --}}
+                  {{#each items}}
+                    <option value={{productId}}>{{productName}}1</option>
+                  {{/each}}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="productName">Product Name</label>
+                <select name="productName" class="form-inline form-select">
+                  <option id="name-option" value="Bergamot">Bergamot</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="qty">Store Qty</label>
+                <input 
+                    type="Number" 
+                    class="form-control" 
+                    name="qty" 
+                    value="0"
+                    min="0"
+                    max="100"
+                    autocomplete="off"
+                    id="qty-input"
+                    />
+            </div>
+            <div class="form-group" id="appear-session">
+                <label for="type">Type</label>
+                <select name="type" class="form-inline form-select" >{{!-- 產品表格 --}}
+                  <option id="type-option" value="50">50ml</option>
+                </select>
+            </div>
+            <div class="form-group" id="appear-session">
+                <label for="price">Price</label>
+                 <input 
+                    type="Number" 
+                    class="form-control" 
+                    name="price" 
+                    value="0"
+                    autocomplete="off"
+                    />
+            </div>
+
+
+        <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+        <a href="/admin/warehouse">
+          <div class="btn btn-primary">check product</div>
+        </a>
+    </div>
+</div>
+
+<script>
+  const selectedId = document.getElementById("update-select-id");
+  const appearSession = document.getElementById("appear-session");
+  const typeOption = document.getElementById("type-option");
+  const nameOption = document.getElementById("name-option");
+  const qtyInput = document.getElementById("qty-input");
+  const form = document.getElementById("form");
+  
+  selectedId.addEventListener('change', function (event){
+    if (event.target.value % 2 !== 0) {
+      typeOption.value = 50;
+      typeOption.innerText = "50ml"
+    } else {
+      typeOption.value = 500
+      typeOption.innerText = "500ml"
+    }
+
+    switch(event.target.value) {
+      case "1":
+      case "2": 
+        nameOption.value = "Bergamot";
+        nameOption.innerText = "Bergamot";
+        break;
+      case "3":
+      case "4":
+        nameOption.value = "Clary Sage";
+        nameOption.innerText = "Clary Sage";
+        break;
+      case "5":
+      case "6":
+        nameOption.value = "Rose Geranium";
+        nameOption.innerText = "Rose Geranium";
+
+      default:
+    }
+  })
+
+  qtyInput.addEventListener('input', function(event){
+    if (event.target.value > 100) {
+      alert("You can't input more than 100!!");
+      qtyInput.value = '100'
+    } 
+  })
+
+
+  
+
+</script>
+
