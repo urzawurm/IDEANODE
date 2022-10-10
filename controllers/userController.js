@@ -85,7 +85,7 @@ export const getLogin = (req,res)=>{
 };
 export const postLogin = (req,res, next) => {
     passport.authenticate("local", {
-    successRedirect: "/ideas",
+    successRedirect: "/",
     failureRedirect: "/users/login",
     failureFlash: true,
     // session: false, 

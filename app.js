@@ -16,6 +16,7 @@ import mongoURI from"./config/database.js";
 import adminRoute from './routes/adminRoute.js'; 
 import productRoute from './routes/productsRoute.js';
 import ensureAuthenticated from "./helpers/auth.js"; 
+import ensureIsAdmin from "./helpers/auth.js"; 
 
 passportConfig(passport);
 dotenv.config();
@@ -74,7 +75,7 @@ app.get("/about",(req,res)=>{
 //把data save入 data base,middle ware ,在routes/ideasRoute.js
 app.use("/ideas", ensureAuthenticated, ideasRoute); 
 app.use("/users", usersRoute);
-app.use('/admin', adminRoute);
+app.use('/admin', ensureIsAdmin, adminRoute);
 app.use("/*",(req,res)=>{
     res.status(404);
     res.render("404");
