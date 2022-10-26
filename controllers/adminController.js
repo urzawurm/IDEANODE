@@ -18,7 +18,9 @@ export const postAdmin =(req, res)=>{
         productName: req.body.productName,
         qty: Number(req.body.qty),
         type: req.body.type,
-        price: Number(req.body.price)
+        price: Number(req.body.price),
+        desc: req.body.desc,
+
       }).save().then(() => {
         res.redirect('/admin');
       })

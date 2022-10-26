@@ -67,7 +67,6 @@
 
       <!-- add new UL on the right -->
       <ul class="navbar-nav ml-auto">
-        
         {{#if user}}
         <li class="nav-item dropdown">
           <a
@@ -75,12 +74,11 @@
           class= "nav-link dropdown-toggle"
           data-toggle="dropdown"
           id="navbarDropdownMenuLink"
-          >Notes</a>
+          >Feedback</a>
           <!-- add selection links-->
           <div class= "dropdown-menu">
-            <a href="/ideas" class= "dropdown-item">Notes</a>
-            <a href="/ideas/add" class="dropdown-item">Add Notes</a>
-            <a href="/ideas/records" class="dropdown-item">Show All Records</a>
+            <a href="/ideas" class= "dropdown-item">Edit Feedback</a>
+            <a href="/ideas/add" class="dropdown-item">Add Feedback</a>
           </div>
         </li>
         <li class="nav-item">
@@ -98,6 +96,12 @@
           <a href="/users/register" class="nav-link">Register</a>
         </li>
         {{/if}}
+
+      <form class="form-inline " action="/products" method="POST">
+        <input name = "searchProd" type="text" class="form-control" value="{{searchProd}}" placeholder="product to search ..."/>
+        <button class="btn btn-success">search</button>
+      </form>
+
     <ul class="navbar-nav text-left ">
         <div> {{!-- shopping Cart--}}
           {{!-- <button class="btn btn-cart" data-toggle="dropdown">
@@ -110,6 +114,7 @@
         <div class="px-4 py-3">
           {{>_shoptable}}
          <a href="/shoppingCart" class="btn btn-success btn-block">Go To Shopping Cart</a>
+
         </div>  
         </div>
         </div>

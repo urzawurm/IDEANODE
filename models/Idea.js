@@ -18,6 +18,10 @@ const IdeaSchema = new Schema({
         type: Date,
         default: Date.now,
     },
-});
+    // timestamp: {
+    //     type: Date,
+    //     default: Date.now,
+    // },
+}, /*{timestamps:true}時間*/ );
 const Idea = mongoose.model("ideas",IdeaSchema);
 export default Idea;

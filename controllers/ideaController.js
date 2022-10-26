@@ -17,7 +17,7 @@ export const postAddIdea=(req,res)=>{//有啲render未寫可改send 試條path w
         errors.push({text: "please add a title"});
     }
     if(!req.body.details){
-        errors.push({text: "please add some details"});
+        errors.push({text: "please add some feedback"});
     }
     //if there are errors, render the page with error message
     if(errors.length>0){
@@ -33,7 +33,7 @@ export const postAddIdea=(req,res)=>{//有啲render未寫可改send 試條path w
             user: res.locals.user._id,
         };
         new Idea(newUser).save().then((idea)=>{//save in data base 
-            req.flash("success_msg","Note Added !"); //出success added的msg 通知
+            req.flash("success_msg","Added Feedback!"); //出success added的msg 通知
             res.redirect("/ideas"); //redirect 上一版
         });
     }
@@ -55,39 +55,18 @@ export const putEditIdea=(req,res)=>{ //user update
         idea.title=req.body.title;
         idea.details=req.body.details;
         idea.save().then(()=>{
-            req.flash("success_msg","Note Update !"); //出success update的msg 通知
+            req.flash("success_msg","Feedback Update !"); //出success update的msg 通知
             res.redirect("/ideas");
         });
+        idea.date=req.body.date;
     });
 };
 export const deleteIdea=(req,res)=>{
     Idea.deleteOne({_id: req.params.id})
         .then(()=>{
-            req.flash("error_msg","Note Deleted !"); //出deleted唔到的msg 通知
+            req.flash("error_msg","Feedback Deleted !"); //出deleted唔到的msg 通知
             res.redirect("/ideas")
         });
 };
 
-export const getRecords= (req,res)=>{
-    Idea.aggregate([
-        {$lookup:{
-            from:"users",
-            localField:"user",
-            foreignField:"_id",
-            as:"userInfo",
-         },
-        },
-        {$unwind:{
-            path: "$userInfo",
-            preserveNullAndEmptyArrays:true,
-         },
-        },
-        {
-         $sort:{
-            "date":-1,
-         },
-        },
-    ]).then(recordsDB=>{
-        res.render("ideas/records",{records:recordsDB});
-    });
-};
+

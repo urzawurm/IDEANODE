@@ -27,6 +27,8 @@ export const deleteShoppingCart = (req, res) => {
   })
 }
 
+
+
 export const postShoppingCart = (req, res) => {
   const { productName, qty, totalPrice, userName, userAddress, shipMethod, finalAmount, productId } = req.body;
   let newFinalAmount = Number(finalAmount) + Number(shipMethod);
@@ -47,7 +49,37 @@ export const postShoppingCart = (req, res) => {
       })
     }
   })
+  
+  if (productId.length <= 1) {
+    Product.findOne({productId: productId}).then((item) => {
+      item.qty = item.qty - qty
+      item.save().then(() => {
+        console.log('sucess')
+        return
+      })
+    })
+    return
+  }
+  
+console.log("hi", typeof productId)
+console.log("hi2", productId)
+
+if (productId !== "string"){
+    productId.forEach(element => {
+      qty.forEach((amount) => {
+        Product.findOne({productId: element}).then((item) => {
+          item.qty = item.qty - amount
+          item.save().then(() => {
+            console.log('sucess')
+          })
+        })
+      })
+    })
+  }
+  
 }
+
+
 
 export const getConfirmCart = (req, res) => {
   Cart.find({userId: res.locals.user._id}).lean().then((item) => {
@@ -88,7 +120,8 @@ export const updateCarts = (req, res) => {
         productNum: item.productName,
         productName: item.productName
       }]
-        res.render('buyConfirm', {items: newCartItem, name: res.locals.user.name, shipMethod: shipMethod, address: res.locals.user.address, totalAmount: totalPrice})
+      
+      res.render('buyConfirm', {items: newCartItem, name: res.locals.user.name, shipMethod: shipMethod, address: res.locals.user.address, totalAmount: totalPrice})
   })
   return
   }

@@ -16,7 +16,7 @@ import mongoURI from"./config/database.js";
 import adminRoute from './routes/adminRoute.js'; 
 import productRoute from './routes/productsRoute.js';
 import ensureAuthenticated from "./helpers/auth.js"; 
-import ensureIsAdmin from "./helpers/auth.js"; 
+import ensureIsAdmin from "./helpers/adminAuth.js"; 
 
 passportConfig(passport);
 dotenv.config();
@@ -42,7 +42,7 @@ app.use(
     resave: true,
     saveUninitialized: true,
     // cookie:{
-    //     maxAge: 100 * 1000 //10秒後logout
+    //     maxAge: 30 * 1000 //30秒後logout
     // }
 })
 );
@@ -67,6 +67,7 @@ app.get("/", (req,res)=>{ //get指令:做完over,會自動加(),所以get(x=>())
     res.render("Index",{title:title}); //OBJ,{title:title}
 });
 app.use("/products", productRoute);
+
 app.use("/shoppingCart", ensureAuthenticated, shoppingCartRoute);
 app.get("/about",(req,res)=>{
     res.render("about");

@@ -3,9 +3,7 @@ P{font-size: larger;
   font-family:cursive;
   font-style: oblique;
 }
-body{background-image: url("/img/background.jpg");
-    background-size: cover;
-}
+
 h3{color: rgba(159, 6, 101, 0.996);
      font-family: fantasy;
 }
@@ -21,15 +19,15 @@ h3{color: rgba(159, 6, 101, 0.996);
                 <label for="productId">Product ID </label>
                 <select name="productId" class="form-inline form-select" id="update-select-id">
                   <option value="1">1-Bergamot 50ml</option>
-                  <option value="2">2-Bergamot 500ml</option>
+                  <option value="2">2-Bergamot 480ml</option>
                   <option value="3">3-Clary Sage 50ml</option>
-                  <option value="4">4-Clary Sage 500ml</option>
+                  <option value="4">4-Clary Sage 480ml</option>
                   <option value="5">5-Rose Geranium 50ml</option>
-                  <option value="6">6-Rose Geranium 500ml</option>
+                  <option value="6">6-Rose Geranium 480ml</option>
                 </select>
             </div>
 
-            <div class="form-group">
+              <div class="form-group">
                 <label for="productName">Product Name</label>
                 <select name="productName" class="form-inline form-select">
                   <option id="name-option" value="Bergamot">Bergamot</option>
@@ -66,6 +64,16 @@ h3{color: rgba(159, 6, 101, 0.996);
                     />
             </div>
 
+              <div class="form-group">
+                <label for="desc">Product desc</label>
+                <select name="desc" class="form-inline form-select">
+                  <option id="desc-option" value="The fruity scent of bergamot uplifts and balances the mind and emotions. Bergamot oil has a regulating influence and can act as a relaxant, stimulant, or tonic depending on the needs of your body, mind and emotions. Bergamot promotes a cheerful and friendly attitude. Its refreshing aroma relieves fatigue.">
+                    The fruity scent of bergamot uplifts and balances the mind and emotions. Bergamot oil has a regulating influence and can act as a relaxant, stimulant, or tonic depending on the needs of your body, mind and emotions. Bergamot promotes a cheerful and friendly attitude. Its refreshing aroma relieves fatigue.
+                  </option>>
+                </select>
+                
+            </div>
+
 
         <button type="submit" class="btn btn-success">Submit</button>
         </form>
@@ -82,14 +90,15 @@ h3{color: rgba(159, 6, 101, 0.996);
   const nameOption = document.getElementById("name-option");
   const qtyInput = document.getElementById("qty-input");
   const form = document.getElementById("form");
+  const descOption = document.getElementById("desc-option");
   
   selectedId.addEventListener('change', function (event){
     if (event.target.value % 2 !== 0) {
       typeOption.value = 50;
       typeOption.innerText = "50ml"
     } else {
-      typeOption.value = 500
-      typeOption.innerText = "500ml"
+      typeOption.value = 480
+      typeOption.innerText = "480ml"
     }
 
     switch(event.target.value) {
@@ -110,7 +119,29 @@ h3{color: rgba(159, 6, 101, 0.996);
 
       default:
     }
+
+    switch(event.target.value) {
+      case "1":
+      case "2": 
+        descOption.value = "The fruity scent of bergamot uplifts and balances the mind and emotions. Bergamot oil has a regulating influence and can act as a relaxant, stimulant, or tonic depending on the needs of your body, mind and emotions. Bergamot promotes a cheerful and friendly attitude. Its refreshing aroma relieves fatigue.";
+        descOption.innertext = "The fruity scent of bergamot uplifts and balances the mind and emotions. Bergamot oil has a regulating influence and can act as a relaxant, stimulant, or tonic depending on the needs of your body, mind and emotions. Bergamot promotes a cheerful and friendly attitude. Its refreshing aroma relieves fatigue.";
+        break;
+      case "3":
+      case "4":
+        descOption.value = "Clary sage (Salvia sclarea) is a flowering herb that's native to the Mediterranean Basin. The essential oil that's extracted from the leaves and buds of the plant has a clean, refreshing scent that you can use as a skin balm or gently inhale as part of an aromatherapy treatment.";
+        descOption.innerText = "Clary sage (Salvia sclarea) is a flowering herb that's native to the Mediterranean Basin. The essential oil that's extracted from the leaves and buds of the plant has a clean, refreshing scent that you can use as a skin balm or gently inhale as part of an aromatherapy treatment.";
+        break;
+      case "5":
+      case "6":
+        descOption.value = "With its musky rose scent, Rose Geranium is a mood-enhancing oil that can leave you feeling balanced and calm, while naturally boosting your health. “A rose by any other name would smell as sweet.” by William Shakespearer.";
+        descOption.innerText = "With its musky rose scent, Rose Geranium is a mood-enhancing oil that can leave you feeling balanced and calm, while naturally boosting your health. “A rose by any other name would smell as sweet.” by William Shakespearer.";
+
+      default:
+    }
+
   })
+
+  
 
   qtyInput.addEventListener('input', function(event){
     if (event.target.value > 100) {

@@ -1,33 +1,39 @@
 <style>
-  body{background-image: url("/img/background.jpg");
-  background-size: cover;
-  }
+
 </style>
 <div class=" text-center" >
 
   <body>
 
     <div id="demo" class="carousel slide" data-ride="carousel">
+
+  <a href="/about">
+   <video class="img-fluid" id="background-video" autoplay loop muted  poster="/img/logo1.png">
+   <source src="/movie/Flower.mp4"  type="video/mp4">
+   </video>
+  </a>
  
   <!-- 下面橫線數量 加圖要加多行-->
-  <ul class="carousel-indicators">
+  
+  {{!-- <ul class="carousel-indicators">
     <li data-target="#demo" data-slide-to="0" class="active"></li>
     <li data-target="#demo" data-slide-to="1"></li>
   </ul>
   <!-- 圖片內容 -->
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="/img/logo.png" width="520">
+      <img src="/img/logo1.png" width="520">
     </div>
+
+</div>
     <div class="carousel-item">
       <img src="/img/photo1.jpg" width="779">
             <div class="carousel-caption">
         <h3>成分</h3>
         <p>介紹</p>
-      </div
+      </div>
     </div>
-  </div>
- 
+
   <!-- 左右切换按钮 -->
   <a class="carousel-control-prev" href="#demo" data-slide="prev">
     <span class="carousel-control-prev-icon"></span>
@@ -35,13 +41,9 @@
   <a class="carousel-control-next" href="#demo" data-slide="next">
     <span class="carousel-control-next-icon"></span>
   </a>
- 
-</div>
+</div> --}}
+
   </body>
 </div>
 
 
-
-{{!-- <video autoplay muted loop id="myVideo">
-<source src="/movie/Flower.mp4" type="video/mp4">
-</video> --}}
